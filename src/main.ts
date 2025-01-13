@@ -8,7 +8,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('NestJS API')
-    .setDescription('The NestJS API description')
+    .setDescription('The NestJS API description by Tiago')
     .setVersion('1.0')
     .addTag('auth')
     .addTag('users')
