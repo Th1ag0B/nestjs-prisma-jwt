@@ -104,6 +104,24 @@ npm run start:debug
 npm run start:prod
 ```
 
+### Criar .env
+
+```bash
+DATABASE_URL="postgresql://nome:assword@localhost:porta/db_nome"
+NODE_ENV=production
+JWT_SECRET="chave"
+JWT_EXPIRES_IN="duração_da_chave"
+
+
+DEV_POSTGRES_USER=nome
+DEV_POSTGRES_PASSWORD=password
+DEV_POSTGRES_DB=db_nome
+
+PROD_POSTGRES_USER=pnome
+PROD_POSTGRES_PASSWORD=password
+PROD_POSTGRES_DB=db_nome
+```
+
 ### Criar Novos Recursos
 
 ```bash
