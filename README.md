@@ -26,41 +26,216 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+# NestJS Starter - Tutorial 🚀
+
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Logo do Nest" /></a>
+</p>
+
+<p align="center">Uma framework Node.js progressiva para construir aplicações server-side eficientes e escaláveis.</p>
+
+## Índice
+
+1. [Introdução](#introdução)
+2. [Pré-requisitos](#pré-requisitos)
+3. [Instalação](#instalação)
+4. [Estrutura do Projeto](#estrutura-do-projeto)
+5. [Comandos Básicos](#comandos-básicos)
+6. [Docker](#docker)
+7. [Testes](#testes)
+8. [Dicas e Boas Práticas](#dicas-e-boas-práticas)
+
+## Introdução
+
+Este é um projeto inicial utilizando NestJS, uma framework para Node.js que utiliza TypeScript e segue os princípios da programação orientada a objetos, programação funcional e programação reativa.
+
+## Pré-requisitos
+
+- Node.js (versão 20 ou superior)
+- NPM ou Yarn
+- Docker (opcional, mas recomendado)
+- Um editor de código (recomendado: VSCode)
+
+## Instalação
+
+1. Primeiro, clona o repositório:
 
 ```bash
-$ npm install
+git clone [url-do-teu-repositorio]
+cd [nome-do-projeto]
 ```
 
-## Running the app
+2. Instala as dependências:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Test
+3. Configura as variáveis de ambiente:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cp .env.example .env
 ```
+
+## Estrutura do Projeto
+
+```
+src/
+├── main.ts              # Ponto de entrada da aplicação
+├── app.module.ts        # Módulo principal
+├── controllers/         # Controladores da aplicação
+├── services/           # Serviços e lógica de negócio
+├── entities/           # Entidades da base de dados
+└── dto/                # Data Transfer Objects
+```
+
+## Comandos Básicos
+
+### Desenvolvimento
+
+```bash
+# Iniciar em modo desenvolvimento
+npm run start:dev
+
+# Iniciar em modo debug
+npm run start:debug
+
+# Iniciar em modo produção
+npm run start:prod
+```
+
+### Criar Novos Recursos
+
+```bash
+# Criar um novo módulo
+nest g module users
+
+# Criar um novo controlador
+nest g controller users
+
+# Criar um novo serviço
+nest g service users
+```
+
+## Docker
+
+### Desenvolvimento
+
+```bash
+# Iniciar contentores de desenvolvimento
+docker compose -f docker-compose.dev.yml up
+
+# Parar contentores
+docker compose -f docker-compose.dev.yml down
+```
+
+### Produção
+
+```bash
+# Iniciar contentores de produção
+docker compose -f docker-compose.prod.yml up
+
+# Parar contentores
+docker compose -f docker-compose.prod.yml down
+```
+
+## Testes
+
+```bash
+# Executar testes unitários
+npm run test
+
+# Executar testes end-to-end
+npm run test:e2e
+
+# Verificar cobertura de testes
+npm run test:cov
+```
+
+## Dicas e Boas Práticas
+
+1. **Estrutura de Módulos**
+
+   - Mantém módulos pequenos e focados
+   - Utiliza lazy loading quando possível
+   - Organiza ficheiros por funcionalidade
+
+2. **Validação**
+
+   - Utiliza DTOs para validação de dados
+   - Implementa pipes de validação
+   - Utiliza decorators para validação
+
+3. **Base de Dados**
+
+   - Utiliza migrations para controlo de versão da base de dados
+   - Implementa repositories para acesso aos dados
+   - Utiliza transactions quando necessário
+
+4. **Segurança**
+   - Implementa autenticação JWT
+   - Utiliza CORS adequadamente
+   - Valida todas as entradas do utilizador
+
+### Exemplos de Código
+
+#### Controller Básico
+
+```typescript
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('users')
+export class UsersController {
+  @Get()
+  findAll() {
+    return 'List of users';
+  }
+}
+```
+
+#### Service Básico
+
+```typescript
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class UsersService {
+  findAll() {
+    return 'Returns all users';
+  }
+}
+```
+
+#### DTO Example
+
+```typescript
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+
+export class CreateUserDto {
+  @IsNotEmpty()
+  @IsString()
+  name: string;
+
+  @IsEmail()
+  email: string;
+}
+```
+
+## Suporte e Comunidade
+
+- [Documentação Oficial do NestJS](https://docs.nestjs.com)
+- [Discord da Comunidade](https://discord.gg/nestjs)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/nestjs)
+
+## Licença
+
+Este projeto está sob a licença [MIT](LICENSE).
+
+---
+
+Para mais informações sobre como utilizar recursos específicos ou implementar funcionalidades adicionais, consulta a [documentação oficial do NestJS](https://docs.nestjs.com).
 
 ## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
 
