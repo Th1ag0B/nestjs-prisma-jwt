@@ -142,9 +142,13 @@ nest g service users
 ```bash
 # Iniciar contentores de desenvolvimento
 docker compose -f docker-compose.dev.yml up
+ou
+npm docker:dev
 
 # Parar contentores
 docker compose -f docker-compose.dev.yml down
+ou
+npm docker:dev-down
 ```
 
 ### Produção
@@ -152,11 +156,28 @@ docker compose -f docker-compose.dev.yml down
 ```bash
 # Iniciar contentores de produção
 docker compose -f docker-compose.prod.yml up
+ou
+npm docker:dev-down
 
 # Parar contentores
 docker compose -f docker-compose.prod.yml down
+ou
+npm docker:prod-down
 ```
 
+## Docker Image
+
+A imagem do Docker para esta aplicação está disponível no Docker Hub:
+
+[![Docker Image](https://img.shields.io/badge/Docker%20Image-Available-blue?logo=docker)](https://hub.docker.com/layers/th1ag0/nestjs-app/latest/images/sha256:4be4ee7b8d530eb7931ccb56649818cf45bb25c08dfca7fda9c4cc90173f55d5)
+
+### Como usar
+
+Para usar esta imagem do Docker:
+
+````bash
+docker pull th1ag0/nestjs-app:latest
+docker run -p 3000:3000 th1ag0/nestjs-app:latest
 ## Testes
 
 ```bash
@@ -168,7 +189,7 @@ npm run test:e2e
 
 # Verificar cobertura de testes
 npm run test:cov
-```
+````
 
 ## Dicas e Boas Práticas
 
