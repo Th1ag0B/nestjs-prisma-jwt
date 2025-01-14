@@ -7,14 +7,12 @@ import { PrismaService } from './prisma.service';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: `.env.${process.env.NODE_ENV || 'development'}`, 
-      isGlobal: true, 
+      isGlobal: true,
     }),
-
     UsersModule,
     AuthModule,
   ],
   controllers: [],
-  providers: [PrismaService], 
+  providers: [PrismaService],
 })
 export class AppModule {}
