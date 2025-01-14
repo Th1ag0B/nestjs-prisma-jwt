@@ -1,0 +1,31 @@
+
+services:
+  postgres-prod:
+    image: postgres:latest
+    container_name: postgres-prod
+    environment:
+      POSTGRES_USER: ${PROD_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${PROD_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${PROD_POSTGRES_DB}
+    ports:
+      - "5434:5432"  
+    volumes:
+      - postgres-prod-data:/var/lib/postgresql/data 
+
+  nestjs-app-prod:
+    image: th1ag0/nestjs-app:latest
+    container_name: nestjs-app-prod
+    environment:
+      DATABASE_URL: "postgresql://${PROD_POSTGRES_USER}:${PROD_POSTGRES_PASSWORD}@postgres-prod:5432/${PROD_POSTGRES_DB}"
+      NODE_ENV: production
+      JWT_SECRET: filmedadisney
+      JWT_EXPIRES_IN: "1h"
+    depends_on:
+      - postgres-prod  
+    ports:
+      - "3333:3333"  
+
+
+volumes:
+  postgres-prod-data:  
+
